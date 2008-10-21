@@ -10,8 +10,6 @@
 #include <pcx/pcx.h>
 #include <assert.h>
 
-CVSID("$Id: pcx.c,v 1.4 2003/06/19 04:33:03 bardtx Exp $");
-
 typedef struct {
 	char   mfg;               /* manufacturer, always 0xa0		*/
 	char   ver;               /* encoder version number (5)		*/

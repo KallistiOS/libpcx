@@ -9,8 +9,6 @@
 #include <kos.h>
 #include <pcx/pcx.h>
 
-CVSID("$Id: pcx_texture.c,v 1.1 2002/04/07 01:54:29 bardtx Exp $");
-
 /* Adjusts a 16-bit image so that instead of RGB565 gray scales, you will
    have ARGB4444 alpha scales. The resulting image will be entirely white. */
 /* Imported here to avoid a dependency on libdcutils.a */
