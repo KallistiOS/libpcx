@@ -6,7 +6,7 @@
 TARGET = libpcx.a
 OBJS = pcx.o
 
-defaultall: create_kos_link $(OBJS) subdirs linklib
+all: create_kos_link defaultall
 
 # creates the kos link to the headers
 create_kos_link:
