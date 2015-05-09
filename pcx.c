@@ -7,8 +7,8 @@
 */
 
 #include <kos.h>
-#include <pcx/pcx.h>
 #include <assert.h>
+#include "pcx.h"
 
 typedef struct {
 	char   mfg;               /* manufacturer, always 0xa0		*/
@@ -90,21 +90,21 @@ int pcx_to_img(const char *fn, kos_img_t *rv) {
 		else
 			image[bytes++] = c;
 	} while (bytes < num_bytes);
-	
+
 
 	/* Load the palette */
 	fs_read(fd, &c, 1);		/* This is a marker before the palette */
 	pcxpal = image + num_bytes;
 	fs_read(fd, pcxpal, 768);
 	fs_close(fd);
-	
+
 	/* Decode the image into RGB565 */
 	for (i=0; i<num_bytes; i++) {
 		v = image[i];
 		r = pcxpal[v*3+0];
 		g = pcxpal[v*3+1];
 		b = pcxpal[v*3+2];
-			
+
 		v = (((r >> 3) & 0x1f) << 11)
 			| (((g >> 2) & 0x3f) << 5)
 			| (((b >> 3) & 0x1f) << 0);
@@ -113,6 +113,6 @@ int pcx_to_img(const char *fn, kos_img_t *rv) {
 
 	/* Free temp buffers */
 	free(image);
-	
+
 	return 0;
 }

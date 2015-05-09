@@ -7,7 +7,7 @@
 */
 
 #include <kos.h>
-#include <pcx/pcx.h>
+#include "pcx.h"
 
 /* Adjusts a 16-bit image so that instead of RGB565 gray scales, you will
    have ARGB4444 alpha scales. The resulting image will be entirely white. */
@@ -15,7 +15,7 @@
 static void _txr_to_alpha(uint16 *img, int x, int y) {
 	int i;
 	short v;
-	
+
 	for (i=0; i<x*y; i++) {
 		v = img[i] & 0x1f;
 		v = ((v >> 1) << 12) | 0x0fff;
@@ -56,4 +56,3 @@ int pcx_load_texture(const char *fn, int twiddle, int alpha,
 
 	return 0;
 }
-

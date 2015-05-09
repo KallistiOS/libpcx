@@ -5,6 +5,7 @@
 
 TARGET = libpcx.a
 OBJS = pcx.o
+KOS_CFLAGS += -Iinclude
 
 all: create_kos_link defaultall
 
@@ -14,4 +15,3 @@ create_kos_link:
 	ln -s ../libpcx/include ../include/pcx
 
 include $(KOS_BASE)/addons/Makefile.prefab
-
